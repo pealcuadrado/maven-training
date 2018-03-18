@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{ISO8601} | %m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>maven-training-server.log</file>
+		<encoder>
+			<pattern>%d{ISO8601} | %-5.5p | %-10.10t | %-50.50c{1} | %-25.25C{0} %4L | %m%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.everis.training" level="DEBUG"/>
+
+	<logger name="org.springframework" level="WARN"/>
+	<logger name="ch.qos.logback" level="WARN"/>
+	<logger name="org.apache.http" level="WARN"/>
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

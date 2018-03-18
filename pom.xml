@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.0.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+
+  <groupId>com.everis.training</groupId>
+  <artifactId>maven-training-aggregator</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>Maven Training :: Aggregator</name>
+  <description>Demo project for Maven training purposes</description>
+  
+  <modules>
+    <module>training-bom</module>
+    <module>training-parent</module>
+    <module>training-shared</module>
+    <module>training-server</module>
+    <module>training-client</module>
+  </modules>
+  
+  <distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>diyvb2-releases</name>
+        <url>http://192.168.1.33:8081/artifactory/libs-release</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>diyvb2-snapshots</name>
+        <url>http://192.168.1.33:8081/artifactory/libs-snapshot</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <repositories>
+    <repository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>https://repo.spring.io/milestone</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+</project>
