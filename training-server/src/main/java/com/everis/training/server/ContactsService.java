@@ -31,4 +31,8 @@ public class ContactsService {
 		return Optional.ofNullable(repository.findById(id));
 	}
 
+	public Optional<ContactResource> removeContact(long id) {
+		return Optional.ofNullable(repository.remove(id));
+	}
+
 }

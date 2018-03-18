@@ -28,6 +28,8 @@ public class ContactsApplication {
 			client.create(args[1]);
 		} else if("retrieve".equalsIgnoreCase(args[0])) {
 			client.retrieve(args[1]);
+		} else if("remove".equalsIgnoreCase(args[0])) {
+			client.remove(args[1]);
 		} else {
 			LOGGER.error("Unknown command '{}'",args[0]);
 		}

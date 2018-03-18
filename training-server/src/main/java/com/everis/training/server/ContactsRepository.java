@@ -49,6 +49,17 @@ public class ContactsRepository {
 		return contacts.get(id);
 	}
 
+	public synchronized ContactResource remove(long id) {
+		ContactResource contact = contacts.get(id);
+		if(contact!=null) {
+			contactNameIndex.remove(id);
+			contactsBySurname.remove(contact.getSurname(),id);
+			contacts.remove(id);
+			LOGGER.info("Removed contact {}",contact);
+		}
+		return contact;
+	}
+
 	private Optional<ContactResource> findContact(String name, String surname) {
 		return
 			Optional.
@@ -61,5 +72,5 @@ public class ContactsRepository {
 						map(id -> contacts.get(id)).
 						findFirst();
 	}
-	
+
 }

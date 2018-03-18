@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,6 +61,18 @@ public class ContactsController {
 		}
 		LOGGER.info("Found contact {}",contact.get());
 		return ResponseEntity.ok(contact.get());
+	}
+
+	@ResponseStatus(HttpStatus.OK)
+	@DeleteMapping(value="{id}", produces="application/json")
+	public void removeContact(@PathVariable long id) {
+		LOGGER.info("Removing contact {}...",id);
+		final Optional<ContactResource> contact = this.service.removeContact(id);
+		if(!contact.isPresent()) {
+			LOGGER.info("Unknown contact {}",id);
+			throw new IllegalStateException("Unknown contact");
+		}
+		LOGGER.info("Removed contact {}",contact.get());
 	}
 
 }
